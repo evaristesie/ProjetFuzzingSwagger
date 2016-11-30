@@ -6,15 +6,12 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
-import com.fuzzing.Oracle.OracleCasTest;
 import com.fuzzing.Oracle.OracleCasTestParametre;
-
-import io.swagger.parser.SwaggerParser;
 
 public class CasTestParametre {
 
 	public int i;
-	public void VerifParametre()
+	public void VerifParametre(int nbParametre)
 	{
 				try {
 								
@@ -27,7 +24,7 @@ public class CasTestParametre {
 					
 					//boucle de generation de 100 donnée aléatoire
 					
-					for(i=0;i<100;i++){
+					for(i=0;i<nbParametre;i++){
 						//Création d'un client Http
 						CloseableHttpClient httpclient = HttpClients.createDefault();
 						
@@ -36,9 +33,10 @@ public class CasTestParametre {
 						  System.out.print(alphabet.charAt(k)+" ");
 						  //Execution de la requete http en remplaçant le paramatre par la donnée generée
 						HttpGet httpGet = new HttpGet("http://localhost:8080/v1/products?latitude=1&longitude="+alphabet.charAt(k));
+						 System.out.print("latitude=1 and longitude="+alphabet.charAt(k));
 						CloseableHttpResponse response = httpclient.execute(httpGet);
 						//appel de l'oracle 
-						oracle.OracleVerifParametre(response,400,i);
+						oracle.OracleVerifParametre(response,400,i,nbParametre);
 						response.close();
 					}
 					
