@@ -10,13 +10,13 @@ public int good=0,bad=0;
 		//verifie si le code retourné par la requette correspond code attendu
 		if(rep.getStatusLine().getStatusCode()==codestatut){
 	      good++;
-			System.out.println("Good Parameter");	
+			System.out.println(" Good Parameter");	
 			
 	}
 		else
-		{bad++;
-		  System.out.println("Bad Parameter");
-			
+		{
+			bad++;
+		  System.out.println(" Bad Parameter");
 		}
 		
 		

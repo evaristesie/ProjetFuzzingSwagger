@@ -16,9 +16,9 @@ public class Fuzzing {
 		Swagger swagger = new SwaggerParser().read("./src/swagger.json");
 
 		
-		 // appel du cas de test paramettre CasTestParametre t = new
-		 CasTestParametre t = new CasTestParametre();
-		 t.VerifParametre(200);
+		 // appel du cas de test paramettre
+		// CasTestParametre t = new CasTestParametre();
+		// t.VerifParametre(200);
 		 
 
 		/*
