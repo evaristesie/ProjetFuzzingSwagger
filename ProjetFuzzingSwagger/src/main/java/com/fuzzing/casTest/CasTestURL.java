@@ -1,8 +1,11 @@
 package com.fuzzing.casTest;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.swing.JTextPane;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -10,6 +13,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import com.fuzzing.Oracle.OracleCasTestURL;
+import com.fuzzing.main.TextAreaStyle;
 
 import io.swagger.models.Swagger;
 
@@ -26,6 +30,8 @@ public class CasTestURL {
 	private String generateURL(){
 		String listurl = new String();
 		List<String> goodUrl = new ArrayList<String>(){
+			private static final long serialVersionUID = 1L;
+
 			{
 				add(baseURL);
 				add("http://localhost:8080/v1/swagger-ui.html");
@@ -56,20 +62,22 @@ public class CasTestURL {
 		return str;
 	}
 	
-	public void startTest( int nbData){
+	public void startTest( int nbData, JTextPane tp, JTextPane tpStat){
 		try {
 			int i;
 			String urlAletoire;
 			OracleCasTestURL oracle = new OracleCasTestURL();
+			String msg;
 			for(i=0;i<nbData;i++){
 				//Création d'un client Http
+				System.out.print("je suis enté");
 				CloseableHttpClient httpclient = HttpClients.createDefault();
 				urlAletoire = generateURL();
 				HttpGet httpGet = new HttpGet(urlAletoire);
 				CloseableHttpResponse response = httpclient.execute(httpGet);
-				System.out.print( (i+1) + " - " );
-				System.out.println("URL generée : "+urlAletoire);
-				oracle.executeOracle(response,404,nbData);
+				msg = ""+(i+1) + " - URL generée : "+urlAletoire+"\n";
+				TextAreaStyle.writeTextArea(tp, msg, Color.BLACK);
+				oracle.executeOracle(response,404,nbData,tp,tpStat);
 				response.close();
 			}
 		} catch (Exception e) {

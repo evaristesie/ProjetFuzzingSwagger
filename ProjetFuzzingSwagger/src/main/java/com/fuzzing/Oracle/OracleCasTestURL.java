@@ -1,6 +1,12 @@
 package com.fuzzing.Oracle;
 
+import java.awt.Color;
+
+import javax.swing.JTextPane;
+
 import org.apache.http.client.methods.CloseableHttpResponse;
+
+import com.fuzzing.main.TextAreaStyle;
 
 public class OracleCasTestURL {
 	int good;
@@ -10,22 +16,28 @@ public class OracleCasTestURL {
 		bad = 0;
 	}
 	
-	public void executeOracle(CloseableHttpResponse rep, int codeRep, int nb){
-		System.out.print("Reponse : "+rep.getStatusLine());
+	public void executeOracle(CloseableHttpResponse rep, int codeRep, int nb, JTextPane tp, JTextPane tpStat){
+		String msg;
+		msg = "Reponse : "+rep.getStatusLine();
 		if( rep.getStatusLine().getStatusCode() == codeRep){
-			System.out.println(" Bad URL ");
+			msg = msg + " Bad URL\n";
+			TextAreaStyle.writeTextArea(tp, msg, Color.RED);
+			TextAreaStyle.writeTextArea(tp, "\n", Color.RED);
 			bad++;
 		}else{
-			System.out.println(" Good URL ");
+			msg = msg + " Good URL\n";
+			TextAreaStyle.writeTextArea(tp, msg, Color.GREEN);
+			TextAreaStyle.writeTextArea(tp, "\n", Color.GREEN);
 			good++;
 		}
 		System.out.println();
 		if( (bad + good) == nb ){
-			System.out.println();
-			System.out.println("=====================================");
-			System.out.println(" Bilan sur "+nb+" Requests executées");
-			System.out.println(" Good URL : " + good);
-			System.out.println(" Bad URL : " + bad);
+			msg = " Bilan sur "+nb+" Requests executées \n";
+			TextAreaStyle.writeTextArea(tpStat, msg, Color.black);
+			msg = " Good URL : " + good + "\n";
+			TextAreaStyle.writeTextArea(tpStat, msg, Color.GREEN);
+			msg = " Bad URL : " + bad + "\n";
+			TextAreaStyle.writeTextArea(tpStat, msg, Color.red);
 		}
 	}
 }
