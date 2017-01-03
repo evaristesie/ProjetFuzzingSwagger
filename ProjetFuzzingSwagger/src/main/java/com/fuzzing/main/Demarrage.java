@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SpinnerNumberModel;
 
 public class Demarrage extends JFrame {
 
@@ -80,6 +81,7 @@ public class Demarrage extends JFrame {
 		panel.add(lblNombreDeDonnes);
 		
 		final JSpinner spinNbData = new JSpinner();
+		spinNbData.setModel(new SpinnerNumberModel(20, 20, 1000, 1));
 		spinNbData.setBounds(147, 10, 70, 20);
 		panel.add(spinNbData);
 		
