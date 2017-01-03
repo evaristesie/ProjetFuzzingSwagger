@@ -34,15 +34,9 @@ public class testParametre {
 	// verifie que le paramettre n'est pas null
 	@Test
 	public void test() {
-		int nbParametre=10;
-		JTextPane tp; 
-		JTextPane tpStat;
-		CasTestParametre param = new CasTestParametre();
-		assertNull("Le nombre de paramettre n'est pas null", nbParametre);
-	
-		
-	
-	
+		CasTestParametre testParam = new CasTestParametre();
+		assertTrue(" Verifier que les attributs ne sont pas nuls ", testParam.getRand() != null & 
+							!testParam.getAlphabet().equals(null) & testParam.getLongueur() != 0);
 	}
 
 }

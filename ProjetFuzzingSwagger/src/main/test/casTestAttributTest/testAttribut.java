@@ -7,12 +7,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import com.fuzzing.casTest.CasTestAttribut;
-import com.fuzzing.casTest.CasTestURL;
 
-import io.swagger.models.Swagger;
-import io.swagger.parser.SwaggerParser;
 
 public class testAttribut {
 
@@ -36,8 +32,9 @@ public class testAttribut {
 	public void test() {
 		
 		//verifie que le random n'est pas null
-		CasTestAttribut attribut = new CasTestAttribut();
-		assertNull("Le random n'est pas null", attribut);
+		CasTestAttribut ta = new CasTestAttribut();
+		assertTrue("Verification des attributs ", !ta.getAlphabet().equals(null) & 
+				!ta.getAlphabet().equals(null) & ta.getRand() != null & ta.getRand2() != null);
 	}
 
 }

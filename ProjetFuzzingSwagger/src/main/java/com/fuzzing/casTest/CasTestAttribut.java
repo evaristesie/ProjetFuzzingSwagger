@@ -19,6 +19,40 @@ public class CasTestAttribut {
 	Random rand2;
 	String alphabet;
 	String alphabet2;
+	
+	
+
+	public Random getRand() {
+		return rand;
+	}
+
+	public void setRand(Random rand) {
+		this.rand = rand;
+	}
+
+	public Random getRand2() {
+		return rand2;
+	}
+
+	public void setRand2(Random rand2) {
+		this.rand2 = rand2;
+	}
+
+	public String getAlphabet() {
+		return alphabet;
+	}
+
+	public void setAlphabet(String alphabet) {
+		this.alphabet = alphabet;
+	}
+
+	public String getAlphabet2() {
+		return alphabet2;
+	}
+
+	public void setAlphabet2(String alphabet2) {
+		this.alphabet2 = alphabet2;
+	}
 
 	public CasTestAttribut() {
 		rand = new Random();

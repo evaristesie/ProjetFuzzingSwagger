@@ -29,15 +29,14 @@ public class testUrl {
 	  @After
 	  public void tearDown() throws Exception { }
 	 
-	 
-	  // verifie que l'url de base n'est pas null
+	
 	@Test
 	public void testBaseURl() {
 		Swagger swagger = new SwaggerParser().read("./src/swagger.json");
+		assertTrue("Vérification de l'exisatence du Swagger",swagger != null);
 		CasTestURL url = new CasTestURL(swagger);
-		assertNull("L'URL de base n'est pas null", url);
-
+		String UrlBase = "http://localhost:8080/v1/";
+		assertTrue("Vérification de l'URL de base",url.getbaseURL().equals(UrlBase));
 	}
 
-	
 }

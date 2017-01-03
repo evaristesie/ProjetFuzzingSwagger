@@ -15,18 +15,46 @@ import com.fuzzing.main.TextAreaStyle;
 
 public class CasTestParametre {
 
-	public int i;
+	private int i;
+	private Random rand ;
+	private String alphabet;
+	private int longueur;
+	
+	
+	public Random getRand() {
+		return rand;
+	}
+
+	public void setRand(Random rand) {
+		this.rand = rand;
+	}
+
+	public String getAlphabet() {
+		return alphabet;
+	}
+
+	public void setAlphabet(String alphabet) {
+		this.alphabet = alphabet;
+	}
+
+	public int getLongueur() {
+		return longueur;
+	}
+
+	public void setLongueur(int longueur) {
+		this.longueur = longueur;
+	}
 
 	public CasTestParametre() {
-
+		rand = new Random();
+		alphabet = "au21b4c3de5";
+		longueur = alphabet.length();
 	}
 
 	public void VerifParametre(int nbParametre, JTextPane tp, JTextPane tpStat) {
 		try {
 
-			Random rand = new Random();
-			String alphabet = "au21b4c3de5";
-			int longueur = alphabet.length();
+			
 			// Cree une instance de mon oracle
 			OracleCasTestParametre oracle = new OracleCasTestParametre();
 			// boucle de generation de 100 donnée aléatoire
